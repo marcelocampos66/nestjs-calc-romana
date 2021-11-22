@@ -23,6 +23,10 @@ export class UsersService {
     return user;
   }
 
+  async getByEmail(email: string) {
+    return this.userModel.findOne({ email }).exec();
+  }
+
   async updateUser(id: string, user: User) {
     await this.userModel.updateOne({ _id: id }, user).exec();
     return this.getById(id);
