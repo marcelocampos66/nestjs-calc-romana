@@ -7,8 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { User } from './User';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { User } from './user.schema';
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -16,27 +15,28 @@ export class UsersController {
   constructor(private UsersService: UsersService) {}
 
   @Post()
-  async register(@Body() user: User) {
+  async register(@Body() user: User): Promise<User> {
     return this.UsersService.register(user);
   }
 
   @Get()
-  async getAll() {
+  async getAll(): Promise<User[]> {
     return this.UsersService.getAll();
   }
 
   @Get(':id')
-  async getById(@Param('id') id: string) {
+  async getById(@Param('id') id: string): Promise<User> {
     return this.UsersService.getById(id);
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() user: User) {
-    return this.UsersService.updateUser(id, user);
+  async update(@Param('id') id: string, @Body() user: User): Promise<User> {
+    const result = await this.UsersService.updateUser(id, user);
+    return result;
   }
 
   @Delete(':id')
-  async deleteUser(@Param('id') id: string) {
+  async deleteUser(@Param('id') id: string): Promise<{ message: string }> {
     await this.UsersService.deleteUser(id);
     return { message: 'User succesfully deleted' };
   }
