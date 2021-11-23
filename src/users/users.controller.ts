@@ -32,18 +32,13 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   async getById(@Param('id') id: string): Promise<User> {
-    const user = await this.usersService.getById(id);
-    if (!user) {
-      throw new NotFoundException();
-    }
-    return user;
+    return this.usersService.getById(id);
   }
 
   @UseGuards(JwtAuthGuard)
   @Put(':id')
   async update(@Param('id') id: string, @Body() user: UserDto): Promise<User> {
-    const result = await this.usersService.updateUser(id, user);
-    return result;
+    return this.usersService.updateUser(id, user);
   }
 
   @UseGuards(JwtAuthGuard)
