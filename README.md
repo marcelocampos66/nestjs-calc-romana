@@ -19,6 +19,15 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Aquivo .env
+<p>Crie um arquivo .env na raiz do projeto e preencha seguindo o exemplo:</p>
+
+```
+  PORT=3000
+  MONGO_DB_URL=mongodb://127.0.0.1:27017/Users
+  JWT_SECRET=meusegredo
+```
+
 ## Endpoints
 
 <p>POST /users - Registra um novo Usuário</p>
