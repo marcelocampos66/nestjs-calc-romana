@@ -19,7 +19,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Aquivo .env
+## Arquivo .env
 <p>Crie um arquivo .env na raiz do projeto e preencha seguindo o exemplo:</p>
 
 ```
