@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Post,
   Put,
@@ -31,7 +32,11 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   async getById(@Param('id') id: string): Promise<User> {
-    return this.usersService.getById(id);
+    const user = await this.usersService.getById(id);
+    if (!user) {
+      throw new NotFoundException();
+    }
+    return user;
   }
 
   @UseGuards(JwtAuthGuard)
