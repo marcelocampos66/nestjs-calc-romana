@@ -1,31 +1,3 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
 ## Installation
 
 ```bash
@@ -45,29 +17,71 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Endpoints
 
-```bash
-# unit tests
-$ npm run test
+<p>POST /users - Registra um novo Usuário</p>
+<p>O endpoint retorna o usuário cadastrado</p>
+<p>Exemplo do Body:</p>
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```
+{
+	"name": "João Silva",
+	"email": "joao.silva@email.com",
+	"password": "123456"
+}
 ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+<p>POST /login - Realiza o login na aplicação</p>
+<p>O endpoint retorna um objeto contendo o Bearer token de autenticação para as demais rotas. Ex: { token }</p>
+<p>Exemplo do Body:</p>
 
-## Stay in touch
+```
+{
+  "email": "joao.silva@email.com",
+  "password": "123456"
+}
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+<br />
+<p>GET /users - Lista todos os usuários cadastrados na aplicação</p>
+<p>O endpoint necessita de um token de autenticação enviado nos headers</p>
 
-## License
+<br />
+<p>GET /users/:id - Lista o usuário cadastrado na aplicação, correspondente ao ID do parametro.</p>
+<p>O endpoint necessita de um token de autenticação enviado nos headers</p>
 
-Nest is [MIT licensed](LICENSE).
+<br />
+<p>PUT /users/:id - Atualiza os dados do usuário cadastrado na aplicação, correspondente ao ID do parametro.</p>
+<p>O endpoint necessita de um token de autenticação enviado nos headers</p>
+<p>Exemplo do Body:</p>
+
+```
+{
+  "name": "João da Silva",
+  "email": "joao.silva@email.com",
+  "password": "novasenha123"
+}
+```
+
+<br />
+<p>DELETE /users/:id - deleta do DB o usuário cadastrado na aplicação, correspondente ao ID do parametro.</p>
+<p>O endpoint necessita de um token de autenticação enviado nos headers</p>
+
+<br />
+<p>POST /calculator/:operacao - faz o cálculo de todos os algarismos romanos passado no array do body</p>
+<p>O parametro operacao corresponde a operação que sera realizada pelo endpoint, tendo duas opções:</p>
+
+```
+    sum: Soma
+    sub: Subtração
+```
+
+<p>O endpoint necessita de um token de autenticação enviado nos headers</p>
+<p>Exemplo do Body:</p>
+
+```
+{
+  "array": ["V", "X", "III", "IV", "XXX", "CD", "XC", "II", "VI"]
+}
+```
