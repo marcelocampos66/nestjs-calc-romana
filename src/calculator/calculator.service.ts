@@ -20,10 +20,10 @@ export class CalculatorService {
     if (op === 'sub') {
       return numericDigits.reduce((result, number) => {
         return result - number;
-      }, 0);
+      });
     }
     return numericDigits.reduce((result, number) => {
       return result + number;
-    }, 0);
+    });
   }
 }
