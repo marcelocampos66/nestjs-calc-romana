@@ -1,10 +1,12 @@
-## Installation
+## API desenvolvida com NestJS.
+
+## Instalação
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Rodando o app
 
 ```bash
 # development
