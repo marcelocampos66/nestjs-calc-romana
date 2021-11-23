@@ -25,9 +25,9 @@ $ npm run start:prod
 
 ```
 {
-	"name": "João Silva",
-	"email": "joao.silva@email.com",
-	"password": "123456"
+  "name": "João Silva",
+  "email": "joao.silva@email.com",
+  "password": "123456"
 }
 ```
 
